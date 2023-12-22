@@ -1,6 +1,7 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
+import { getAuth } from "firebase/auth";
 
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
@@ -39,6 +40,12 @@ const AuthDetails = () => {
       )}
     </div>
   );
+};
+
+export const getCurrentUserId = () => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  return user ? user.uid : null;
 };
 
 export default AuthDetails;

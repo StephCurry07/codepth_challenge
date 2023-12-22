@@ -68,7 +68,7 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit" disabled={loading}>
-          {loading ? 'Processing...' : isSignUp ? 'Sign Up' : 'Log In'}
+          {loading ? 'Processing...' : isSignUp ? 'Sign Up' : 'Sign In'}
         </button>
       </form>
     </div>

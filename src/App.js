@@ -1,10 +1,13 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import SignIn from './components/auth/SignIn';
-import AuthDetails from './components/AuthDetails';
+// import AuthDetails from './components/AuthDetails';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
+import CreateJob from './components/job/CreateJob';
+import JobDetails from './components/job/JobDetails';
+import './components/job/styles.css';
 
 const App = () => {
   return (
@@ -12,11 +15,14 @@ const App = () => {
       <Router>
         <div>
           <Routes>
-            <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/" element={<SignIn/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/create-job" element={<CreateJob />} />
+            <Route path="/job-details/:id" element={<JobDetails />} />
           </Routes>
         </div>
       </Router>
+      
     </div>
   );
 };
