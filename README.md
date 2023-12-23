@@ -12,6 +12,7 @@ This is a job hiring portal built with React, Firebase, and Firestore. The appli
   - [Applying for a Job](#applying-for-a-job)
 - [Folder Structure](#folder-structure)
 - [Technologies Used](#technologies-used)
+- [Testing](#testing)
 
 ## Features
 
@@ -107,3 +108,7 @@ Authentication
 Cloud Functions (for notifications)
 Node.js
 npm
+
+## Testing
+Email: test@gmail.com
+Password: testtest
