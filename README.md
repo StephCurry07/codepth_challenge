@@ -43,8 +43,8 @@ This is a job hiring portal built with React, Firebase, and Firestore. The appli
 
 3. Set up Firebase:
 
-Create a Firebase project: Firebase Console
-Update the firebase-config.js file with your Firebase project configuration.
+  Create a Firebase project: Firebase Console
+  Update the firebase-config.js file with your Firebase project configuration.
 
 4. Run the application:
    ```npm start```
@@ -62,14 +62,44 @@ Update the firebase-config.js file with your Firebase project configuration.
 
 ## Folder Structure
 
-/job-application-system
-  /public
-  /src
-    /components
-    /pages
-    /firebase
-    ...
-  /...
+```
+└── 📁react-firebase-auth
+    └── package-lock.json
+    └── package.json
+    └── 📁public
+        └── favicon.ico
+        └── index.html
+        └── logo192.png
+        └── logo512.png
+        └── manifest.json
+        └── robots.txt
+    └── README.md
+    └── 📁src
+        └── App.css
+        └── App.js
+        └── App.test.js
+        └── 📁components
+            └── 📁auth
+                └── SignIn.css
+                └── SignIn.jsx
+            └── AuthDetails.jsx
+            └── Dashboard.js
+            └── 📁job
+                └── 📁Applicant
+                    └── ConfirmationPage.js
+                    └── JobAppForm.jsx
+                    └── JobAppPage.jsx
+                └── CreateJob.jsx
+                └── JobDetails.jsx
+                └── JobItem.jsx
+                └── styles.css
+        └── firebase.js
+        └── index.css
+        └── index.js
+        └── logo.svg
+        └── reportWebVitals.js
+        └── setupTests.js
+```
   
 ## Technologies Used
 React
