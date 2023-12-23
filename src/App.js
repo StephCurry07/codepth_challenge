@@ -8,6 +8,8 @@ import Dashboard from './components/Dashboard';
 import CreateJob from './components/job/CreateJob';
 import JobDetails from './components/job/JobDetails';
 import './components/job/styles.css';
+import JobApplicationForm from './components/job/Applicant/JobAppForm';
+import ConfirmationPage from './components/job/Applicant/ConfirmationPage';
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
             <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/create-job" element={<CreateJob />} />
             <Route path="/job-details/:id" element={<JobDetails />} />
+            <Route path="/apply/:jobId" element={<JobApplicationForm/>} />
+            <Route path="/confirmation/:value" element={<ConfirmationPage/>} />
           </Routes>
         </div>
       </Router>

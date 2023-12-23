@@ -86,8 +86,8 @@ const CreateJob = () => {
         Salary:
         <input
           type="text"
-          pattern="[0-9]*" // Accepts only numeric input
-          inputMode="numeric" // Provides a numeric keyboard on mobile devices
+          pattern="[0-9]*"
+          inputMode="numeric"
           value={salary}
           onChange={(e) => setSalary(e.target.value)}
         />

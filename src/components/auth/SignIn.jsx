@@ -14,9 +14,9 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic form validation
     if (!email || !password) {
       console.log('Please enter both email and password.');
+      alert('Please enter both email and password.');
       return;
     }
 
@@ -24,15 +24,11 @@ const SignIn = () => {
 
     try {
       if (isSignUp) {
-        // Sign up
-        // Implement sign-up logic if needed
         console.log('User signed up successfully.');
       } else {
-        // Sign in
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log('User signed in:', userCredential.user);
 
-        // Redirect to the dashboard after successful sign-in
         navigate('/dashboard');
       }
     } catch (error) {

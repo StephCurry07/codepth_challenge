@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { JobApplicationForm }from './Applicant/JobAppForm';
 
 const JobDetails = () => {
   const { id } = useParams();
   const [jobDetails, setJobDetails] = useState(null);
+  const [copied, setCopied] = useState(false);
+  const appLink = `${window.location.origin}/apply/${id}`;
+  
+  const copyLink = () => {
+    navigator.clipboard.writeText(appLink);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,25 +25,25 @@ const JobDetails = () => {
         if (docSnap.exists()) {
           setJobDetails({ id: docSnap.id, ...docSnap.data() });
         } else {
-          console.log('No such document!');
+          // console.log('No such document!');
+          alert('No such document!')
         }
       } catch (error) {
-        console.error('Error fetching job details: ', error.message);
+        // console.error('Error fetching job details: ', error.message);
+        alert('Error fetching job details: ', error.message)
       } 
     };
 
     fetchJobDetails();
   }, [id]);
   
-  console.log(jobDetails);
+  // console.log(jobDetails);
 
-  // Check if jobDetails is not null or undefined before destructure
   if (!jobDetails) {
     return <p>Loading...</p>;
   }
-  const { about, companyName, createdBy, eligibility, jobTitle, roles, salary } = jobDetails;
+  const { about, companyName, eligibility, jobTitle, roles, salary } = jobDetails;
   // console.log(jobDetails);
-  
   return (
     <div>
       <h2>Job Details</h2>
@@ -66,9 +73,11 @@ const JobDetails = () => {
         <h3>About:</h3>
         <p>{about}</p>
       </div>
-      <h1>Apply for a Job</h1>
-      <p>Fill out the form below to apply for the job.</p>
-      <JobApplicationForm />
+      <Link to={`/apply/${id}`}>
+        <button>Apply for this Job</button>
+      </Link>
+      &nbsp; <button onClick={copyLink}>Copy Application Link</button>
+      {copied && <label style={{ color: 'green' }}>Copied!</label>}
     </div>
   );
 };
