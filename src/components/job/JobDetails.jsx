@@ -77,6 +77,7 @@ const JobDetails = () => {
         <button>Apply for this Job</button>
       </Link>
       &nbsp; <button onClick={copyLink}>Copy Application Link</button>
+      <Link to={`/job/${id}/responses`}> <button>View Responses</button></Link>
       {copied && <label style={{ color: 'green' }}>Copied!</label>}
     </div>
   );

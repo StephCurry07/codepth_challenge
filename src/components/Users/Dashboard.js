@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import JobItem from './job/JobItem';
+import JobItem from '../job/JobItem';
 import styled from 'styled-components';
 
 
-// const Container = styled.div`
-//   position: relative;
-// `;
+const Container = styled.div`
+  position: relative;
+`;
 
 const CreateJobLink = styled(Link)`
   position: relative;
   bottom: 10px;
   top: 10px;
-  left: 50%;
+  left: 46%;
   transform: translateX(-50%);
   background-color: #4caf50;
   color: white;
@@ -26,6 +26,23 @@ const CreateJobLink = styled(Link)`
 
   &:hover {
     background-color: #45a049;
+  }
+`;
+
+const NotificationButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 115px;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
   }
 `;
 
@@ -64,7 +81,9 @@ const Dashboard = () => {
 
     fetchJobs();
   }, []);
-
+  const showNotif = () => {
+    history('/coming');
+  }
   const handleClick = () => {
     signOut(auth)
       .then(() => {
@@ -78,6 +97,9 @@ const Dashboard = () => {
     return (
       <div>
         <h1>Welcome</h1>
+        <NotificationButton onClick={showNotif}>
+          Notifications
+        </NotificationButton>
         <SignOutButton onClick={handleClick}>Sign Out</SignOutButton>
         <h2>List of Jobs:</h2>
         <ul className='job-list'>
@@ -87,9 +109,9 @@ const Dashboard = () => {
           </li>
         ))}
         </ul>
-      {/* <Container> */}
+      <Container>
         <CreateJobLink to="/create-job">Create a Job</CreateJobLink>
-      {/* </Container> */}
+      </Container>
       </div>
     );
   };

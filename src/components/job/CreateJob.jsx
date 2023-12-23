@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { getCurrentUserId } from "../AuthDetails";
+import { getCurrentUserId } from "../Users/AuthDetails";
 
 const CreateJob = () => {
   const navigate = useNavigate();

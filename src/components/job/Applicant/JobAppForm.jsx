@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const JobApplicationForm = () => {
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ const JobApplicationForm = () => {
   const [resume, setResume] = useState(null);
   const [reasonToJoin, setReasonToJoin] = useState("");
   const navigate = useNavigate();
-
+  const { jobId } = useParams();
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -25,8 +25,10 @@ const JobApplicationForm = () => {
         currentSalary,
         resume,
         reasonToJoin,
+        jobId: `${jobId}`,
       });
       console.log("Job application submitted with ID:", docRef.id);
+      console.log("Job ID:", jobId);
       // alert("Job application submitted with ID:", docRef.id);
       navigate(`/confirmation/${docRef.id}`);
     } catch (error) {
