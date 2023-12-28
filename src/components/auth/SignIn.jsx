@@ -33,40 +33,45 @@ const SignIn = () => {
       }
     } catch (error) {
       console.error('Authentication error:', error.message);
-      alert(error)
+      alert(error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="sign-in-container">
-      <div className="tabs">
-        <button onClick={() => setIsSignUp(false)} className={!isSignUp ? 'active' : ''}>
-          Sign In
-        </button>
-        <button onClick={() => setIsSignUp(true)} className={isSignUp ? 'active' : ''}>
-          Sign Up
-        </button>
+    <div className="page">
+      <div className="title">
+        <h1><u><i>HireX</i></u></h1>
       </div>
-      <form onSubmit={handleSubmit}>
-        <h1>{isSignUp ? 'Create Account' : 'Log In'}</h1>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Processing...' : isSignUp ? 'Sign Up' : 'Sign In'}
-        </button>
-      </form>
+      <div className="sign-in-container">
+        <div className="tabs">
+          <button onClick={() => setIsSignUp(false)} className={!isSignUp ? 'active' : ''}>
+            Sign In
+          </button>
+          <button onClick={() => setIsSignUp(true)} className={isSignUp ? 'active' : ''}>
+            Sign Up
+          </button>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <h1>{isSignUp ? 'Create Account' : 'Log In'}</h1>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit" disabled={loading}>
+            {loading ? 'Processing...' : isSignUp ? 'Sign Up' : 'Sign In'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
